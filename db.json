@@ -1,0 +1,76 @@
+{
+  "register": [
+    {
+      "first": "hxgcha",
+      "last": "",
+      "email": "",
+      "number": "",
+      "age": "",
+      "state": "",
+      "country": "",
+      "address": "",
+      "tag": "",
+      "id": 1
+    },
+    {
+      "first": "sneha",
+      "last": "joshi",
+      "email": "johu@ffg.com",
+      "number": "45236668",
+      "age": "",
+      "state": "state",
+      "country": "country",
+      "address": "address",
+      "tag": "",
+      "id": 2
+    },
+    {
+      "first": "sneha",
+      "last": "hiajkn",
+      "email": "jndsnjn",
+      "number": "3656",
+      "age": 22,
+      "state": "state",
+      "country": "country",
+      "address": "address",
+      "tag": "dgvfhs",
+      "id": 3
+    },
+    {
+      "first": "",
+      "last": "",
+      "email": "",
+      "number": "",
+      "age": "",
+      "state": "",
+      "country": "",
+      "address": "",
+      "tag": "",
+      "id": 4
+    },
+    {
+      "first": "",
+      "last": "",
+      "email": "",
+      "number": "",
+      "age": "",
+      "state": "",
+      "country": "",
+      "address": "",
+      "tag": "",
+      "id": 5
+    },
+    {
+      "first": "Sneha",
+      "last": "Joshi",
+      "email": "joshisneha879@gmail.com",
+      "number": "07774864900",
+      "age": 18,
+      "state": "state",
+      "country": "country",
+      "address": "address",
+      "tag": "jnvj",
+      "id": 6
+    }
+  ]
+}

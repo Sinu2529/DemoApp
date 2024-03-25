@@ -1,0 +1,31 @@
+<div class="container">
+<div class="header">
+    <header>
+        <h2>Demo App</h2>
+        <li>Home</li>
+        <li>about us</li>
+        <li>Jobs</li>
+        <li>Clients</li>
+        <li>Developer</li>
+        <li>contact us</li>
+    </header>
+</div>
+
+<div class="profile">
+    <div class="pic">
+        <img src="/assets/profile-pic.jpg">
+        <button routerLink="/edit-profile">Edit Profile</button>
+        <button>Edit Photo</button>
+
+    </div>
+
+
+    <div class="info">
+        <p *ngFor="let user of userarray">I'm {{user.first}} {{user.last}} and im above {{user.age}} years and you can send your emails to{{user.email}}. i live in the state of {{user.state}}.
+        I like to play {{user.tag}} ans please seend me the newsletters.Please reach out to me on my phone number{{user.number}}.</p>
+    </div>
+    <div class="agree">
+        <button>I agree</button>
+    </div>
+</div>
+</div>

@@ -1,0 +1,65 @@
+<div class="container">
+    <header>
+        <li>Register</li>
+        <button class="btn-close">&times;</button>
+    </header>
+    <form [formGroup]="userForm">
+        <div class="profilepicture">
+            <img [src]="imageurl" height="200px" width="200px">
+            <label for="input-file">upload image</label>
+            <input type="file" accept="image/jpeg, image/png, image/jpg">
+        </div>
+        <div class="row">
+            <div class="name">
+                <input type="text" class=:form-control placeholder="First Name" formControlName="first" required minlength="20">
+                <input type="text"  placeholder="Last Name" formControlName="last">
+            </div>
+            <div class="email">
+                <input type="email"  placeholder="Email" formControlName="email">
+            </div>
+            <div class="phone">
+                <input type="phone"  placeholder="Phone Number" formControlName="number">
+            </div>
+            <div class="age">
+                <input type="range" min="1" max="100"  value="10" class="slider" formControlName="age">
+            </div>
+            <div class="state">
+                <select name="state" formControlName="state">
+                    <option value="state">Maharastra</option>
+                    <option value="state">Goa</option>
+                    <option value="state">UP</option>
+                    <option value="state">Kashmir</option>
+                </select>
+            </div>
+            <div class="country">
+                <select name="country" formControlName="country">
+                    <option value="country">Maharastra</option>
+                    <option value="country">Goa</option>
+                    <option value="country">UP</option>
+                    <option value="country">Kashmir</option>
+                </select>
+            </div>
+            <div class="address">
+                <select name="address" formControlName="address">
+                    <option value="address">Address</option>
+                    <option value="address">Home</option>
+                    <option value="address">Company</option>
+                </select>
+                <div class="tag">
+                    <input type="text"  placeholder="Tags" formControlName="tag">
+                </div>
+                <div class="newsletter">
+                    <input type="checkbox">
+                    <label>Subscribe to Newsletter</label>
+                </div>
+                <div class="submit">
+                    <button>Cancel</button>
+                    <!-- <button (click)="onSaveUser()" routerLink="/profile">Submit</button> -->
+                    <button routerLink="/profile" (click)="ss.showDailog=true">submit</button> 
+                </div>
+            </div>
+    </div>
+
+    </form>
+    
+</div>

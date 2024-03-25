@@ -1,0 +1,82 @@
+:host{
+    display: flex;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.container{
+    width: 50%;
+    height: 80%;
+    box-shadow: 5px 5px 5px 5px black;
+    border-radius: 10px;
+    background-color:white;
+}
+.btn-close{
+    background-color: transparent;
+    border: 0cap;
+    cursor: pointer;
+
+}
+header li{
+    font-size: x-large;
+    font-weight: bold;
+    list-style-type: none;
+}
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: lightskyblue;
+    img{
+        border-radius: 50%;
+    }
+}
+.profilepicture{
+    display: flex;
+    align-items: center;
+    justify-content:left;
+    img{
+        border-radius: 50%;
+    }
+    input{
+        position: relative;
+        top: 130px;
+        right: 10px;
+        left: -250px;
+    }
+}
+.row{
+    display: flex;
+    text-align: right;
+    position: relative;
+    top: -100px;
+    .email input{
+        width: 365px;
+    }
+    .phone input{
+        width: 365px;
+    }
+    .age input{
+        width: 365px;
+    }
+    .state select{
+        width: 365px;
+    }
+    .country select{
+        width: 365px;
+    }
+    .address select{
+        width: 365;
+    }
+    .tag input{
+        width: 365px;
+    }
+    .submit button{
+        width: 185px;
+    }
+}

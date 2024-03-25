@@ -1,0 +1,60 @@
+<div class="main">
+    <div class="container">
+        <div class="header">
+            <h2>Demo App</h2>
+            <ul>
+                <li>Home</li>
+                <li>About us</li>
+                <li>Jobs</li>
+                <li>Clients</li>
+                <li>Employees</li>
+                <li>Contact us</li>
+            </ul>
+        </div>
+        <h1>I'm looking for..</h1>
+        <div class="search">
+
+            <input type="text" placeholder="Enter a Job description">
+            <button>Search</button>
+        </div>
+        <div class="location">
+            <input type="checkbox" name="Full time" value="Full time">
+            <label for="Full time">Full time</label>
+            <input type="checkbox" name="Part Time/Casual/Freelance" value="Part Time/Casual/Freelance">
+            <label for="Part Time/Casual/Freelance">Part Time/Casual/Freelance</label>
+            <!-- <label for="location">Select your Location</label> -->
+            <select name="location">
+                <option value="location">Select Your location</option>
+                <option value="location">India</option>
+                <option value="location">Korea</option>
+            </select>
+        </div>
+        <button routerLink="/register" (click)="ss.showDailog=true">Register</button> 
+    
+    </div>
+</div>
+
+<div class="divmid">
+    <div class="container">
+        <div class="row">
+        <h4>We're leaders in</h4></div>
+        <div class="row"><h1>Creative Digital Recruitment</h1></div>
+        <div class="para">
+        <p>Based in Surry Hills, the creative hub if Sydney we are surrounded by creativity and that reflects on the type of jobs we recruit for.</p>
+    </div>
+        <button>FIND OUT MORE ABOUT US</button>
+    
+
+    </div>
+</div>
+
+<div class="last">
+
+    <div class="row">
+        <h4>Subcribe to our Job Seeker Mailing List</h4>
+    </div>
+    <div class="row">
+        <input type="text" placeholder="Enter Your Email Address">
+    </div>
+
+</div>
