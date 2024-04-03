@@ -5,19 +5,7 @@
     color: rgb(231, 240, 237);
     padding: 3rem;
 }
-.header{
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-}
-ul{
-    list-style-type: none;
-    margin: auto;
-}
-ul li{
-    padding: 1em;
-    display: inline-block;
-}
+
 h1{
     padding-top: 50px;
 }
@@ -57,19 +45,4 @@ h1{
     left: 100%;
     right: 100%; 
    
-}
-.last{
-    display: flex;
-    padding-top: 100px;
-    padding-bottom: 200px;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    .row input{
-        position: relative;
-        top: 50px;
-        left: -350px;
-        width: 300px;
-        height: 30px;
-    }
 }

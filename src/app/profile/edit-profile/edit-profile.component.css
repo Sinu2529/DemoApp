@@ -1,20 +1,12 @@
-:host{
-    display: flex;
-    position: fixed;
-    top: 0px;
-    right: 0px;
-    width: 100%;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-}
-
 .container{
-    width: 50%;
-    height: 80%;
-    box-shadow: 5px 5px 5px 5px black;
+    position: absolute;
+    top:60%;
+    left: 50%;
+    width: 45%;
+    padding: 30px;
     border-radius: 10px;
     background-color:white;
+    transform: translate(-50%,-50%);
 }
 .btn-close{
     background-color: transparent;
@@ -29,6 +21,7 @@ header li{
 }
 header{
     display: flex;
+    padding: 20px;
     align-items: center;
     justify-content: space-between;
     background-color: lightskyblue;
@@ -36,6 +29,11 @@ header{
         border-radius: 50%;
     }
 }
+.aside{
+    width: 30;
+    float: left;
+}
+
 .profilepicture{
     display: flex;
     align-items: center;
@@ -43,40 +41,12 @@ header{
     img{
         border-radius: 50%;
     }
-    input{
-        position: relative;
-        top: 130px;
-        right: 10px;
-        left: -250px;
-    }
+    
 }
-.row{
-    display: flex;
-    text-align: right;
-    position: relative;
-    top: -100px;
-    .email input{
-        width: 365px;
-    }
-    .phone input{
-        width: 365px;
-    }
-    .age input{
-        width: 365px;
-    }
-    .state select{
-        width: 365px;
-    }
-    .country select{
-        width: 365px;
-    }
-    .address select{
-        width: 365;
-    }
-    .tag input{
-        width: 365px;
-    }
-    .submit button{
-        width: 185px;
-    }
+.main{
+    top: 10px;
+    padding: 10px;
+}
+.formgroup{
+    padding: 3px;
 }

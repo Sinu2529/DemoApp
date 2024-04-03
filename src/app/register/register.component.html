@@ -4,61 +4,102 @@
         <button class="btn-close">&times;</button>
     </header>
     <form [formGroup]="userForm">
-        <div class="profilepicture">
-            <img [src]="imageurl" height="200px" width="200px">
-            <label for="input-file">upload image</label>
-            <input type="file" accept="image/jpeg, image/png, image/jpg">
+        <div class="aside">
+            <div class="profilepicture">
+                <img [src]="imageurl" height="200px" width="200px">
+            </div>
+            <div class="file">
+            <input type="file" formControlName="image" (change)="onSelectFile($event)">  
+            </div>
         </div>
         <div class="row">
-            <div class="name">
-                <input type="text" class=:form-control placeholder="First Name" formControlName="first" required minlength="20">
-                <input type="text"  placeholder="Last Name" formControlName="last">
+            <div class="formgroup">
+                <input type="text" class="main" placeholder="First Name" formControlName="first" >
+                <span *ngIf="first && first.invalid && first.touched" style="color: red; font-size: small;">This field is require</span>
+                <input type="text" class="main" placeholder="Last Name" formControlName="last">
+                <span *ngIf="last && last.invalid && last.touched" style="color: red; font-size: small;">This field is require</span>
             </div>
-            <div class="email">
-                <input type="email"  placeholder="Email" formControlName="email">
+            <div class="formgroup">
+                <input type="email" class="main" placeholder="Email" formControlName="email">
+                <span *ngIf="email && email.invalid && email.touched" style="color: red; font-size: small;">This field is require</span>
+
             </div>
-            <div class="phone">
-                <input type="phone"  placeholder="Phone Number" formControlName="number">
+            <div class="formgroup">
+                <input type="phone" class="main" placeholder="Phone Number" formControlName="number">
+                <span *ngIf="number && number.invalid && number.touched" style="color: red; font-size: small;">This field is require</span>
+
             </div>
-            <div class="age">
-                <input type="range" min="1" max="100"  value="10" class="slider" formControlName="age">
+            <div class="formgroup">                 
+                <label>Age</label>
+                <input type="range" class="main" min="1" max="100"  value="10" class="slider" formControlName="age">
+                <span *ngIf="age && age.invalid && age.touched" style="color: red; font-size: small;">This field is require</span>
+
             </div>
-            <div class="state">
-                <select name="state" formControlName="state">
-                    <option value="state">Maharastra</option>
-                    <option value="state">Goa</option>
-                    <option value="state">UP</option>
-                    <option value="state">Kashmir</option>
+            <div class="formgroup">
+                <select name="state" formControlName="state" class="main">
+                    <option value="" >State</option>
+                    <option value="Maharashtra">Maharastra</option>
+                    <option value="Goa">Goa</option>
+                    <option value="Up">UP</option>
+                    <option value="Kashmir">Kashmir</option>
                 </select>
             </div>
-            <div class="country">
-                <select name="country" formControlName="country">
-                    <option value="country">Maharastra</option>
-                    <option value="country">Goa</option>
-                    <option value="country">UP</option>
-                    <option value="country">Kashmir</option>
+            <div class="formgroup">
+                <select name="country" formControlName="country" class="main">
+                    <option value="">Country</option>
+                    <option value="India">India</option>
+                    <option value="China">China</option>
+                    <option value="Korea">korea</option>
                 </select>
             </div>
-            <div class="address">
-                <select name="address" formControlName="address">
-                    <option value="address">Address</option>
-                    <option value="address">Home</option>
-                    <option value="address">Company</option>
+            <div class="formgroup">
+                <select formControlName="address" class="main">
+                    <option value="">Address</option>
+                    <option value="Home">Home</option>
+                    <option value="Company">Company</option>
                 </select>
-                <div class="tag">
-                    <input type="text"  placeholder="Tags" formControlName="tag">
+                
+                <div *ngIf="userForm.get('address')?.value === 'Home'" class="main">
+                    <input type="text" formControlName="address1" placeholder="Address 1">
+                    <input type="text" formControlName="address2" placeholder="Address 2">
                 </div>
-                <div class="newsletter">
-                    <input type="checkbox">
-                    <label>Subscribe to Newsletter</label>
+                <div *ngIf="userForm.get('address')?.value === 'Company'" class="main">
+                    <input type="text" formControlName="address1" placeholder="Address 1">
+                    <input type="text" formControlName="address2" placeholder="Address 2">
+                </div>
+                </div>
+
+
+                  
+            <mat-form-field class="tags">
+                <mat-chip-grid #chipGrid aria-label="Tags">
+                  @for (tag of tags; track tag) {
+                    <mat-chip-row
+                      (removed)="remove(tag)"
+                      [editable]="true">
+                      {{tag.name}}
+                      <button matChipRemove [attr.aria-label]="'remove ' + tag.name">
+                        <mat-icon>cancel</mat-icon>
+                      </button>
+                    </mat-chip-row>
+                  }
+                  <input placeholder="New tag..." formControlName="tags" class="main"
+                         [matChipInputFor]="chipGrid"
+                         [matChipInputAddOnBlur]="addOnBlur"
+                         (matChipInputTokenEnd)="add($event)"/>
+                </mat-chip-grid>
+              </mat-form-field>
+              
+              
+                <div class="formgroup">
+                    <input type="checkbox" class="main">
+                    <label >Subscribe to Newsletter</label>
                 </div>
                 <div class="submit">
-                    <button>Cancel</button>
-                    <!-- <button (click)="onSaveUser()" routerLink="/profile">Submit</button> -->
-                    <button routerLink="/profile" (click)="ss.showDailog=true">submit</button> 
+                    <button (click)="onCancel()" class="main">Cancel</button>
+                    <button (click)="onSaveUser()" routerLink="/profile" [disabled]="userForm.invalid">Submit</button>
                 </div>
             </div>
-    </div>
 
     </form>
     

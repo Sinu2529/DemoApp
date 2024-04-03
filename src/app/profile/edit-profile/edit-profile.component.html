@@ -1,65 +1,74 @@
 <div class="container">
     <header>
-        <li>Edit Profile</li>
+        <li>edit</li>
         <button class="btn-close">&times;</button>
     </header>
     <form [formGroup]="userForm">
-        <div class="profilepicture">
-            <img [src]="imageurl" height="200px" width="200px">
-            <span><label for="input-file">upload image</label></span>
-            <span><input type="file" accept="image/jpeg, image/png, image/jpg"></span>
+        <div class="aside">
+            <div class="profilepicture">
+                <img [src]="imageurl" height="200px" width="200px">
+            </div>
+            <div class="file">
+            <input type="file" formControlName="image">  
+            </div>
         </div>
         <div class="row">
-            <div class="name">
-                <input type="text" class=:form-control placeholder="First Name" formControlName="first">
-                <input type="text"  placeholder="Last Name" formControlName="last">
+            <div class="formgroup">
+                <input type="text" class="main" placeholder="First Name" formControlName="first">
+                <input type="text" class="main" placeholder="Last Name" formControlName="last">
             </div>
-            <div class="email">
-                <input type="email"  placeholder="Email" formControlName="email">
+            <div class="formgroup">
+                <input type="email" class="main" placeholder="Email" formControlName="email">
             </div>
-            <div class="phone">
-                <input type="phone"  placeholder="Phone Number" formControlName="number">
+            <div class="formgroup">
+                <input type="phone" class="main" placeholder="Phone Number" formControlName="number">
             </div>
-            <div class="age">
-                <input type="range" min="1" max="100"  value="20" class="slider" formControlName="age">
+            <div class="formgroup">
+                <label>Age</label>
+                <input type="range" class="main" min="1" max="100"  value="10" class="slider" formControlName="age">
             </div>
-            <div class="state">
-                <select name="state" formControlName="state">
-                    <option value="state">State</option>
-                    <option value="state">Maharastra</option>
-                    <option value="state">Goa</option>
-                    <option value="state">UP</option>
-                    <option value="state">Kashmir</option>
+            <div class="formgroup">
+                <select name="state" formControlName="state" class="main">
+                    <option value="" >State</option>
+                    <option value="Maharashtra">Maharastra</option>
+                    <option value="Goa">Goa</option>
+                    <option value="Up">UP</option>
+                    <option value="Kashmir">Kashmir</option>
                 </select>
             </div>
-            <div class="country">
-                <select name="country" formControlName="country">
-                    <option value="country">Country</option>
-                    <option value="country">Maharastra</option>
-                    <option value="country">Goa</option>
-                    <option value="country">UP</option>
-                    <option value="country">Kashmir</option>
+            <div class="formgroup">
+                <select name="country" formControlName="country" class="main">
+                    <option value="">Country</option>
+                    <option value="India">India</option>
+                    <option value="China">China</option>
+                    <option value="Korea">korea</option>
                 </select>
             </div>
-            <div class="address">
-                <select name="address" formControlName="address">
-                    <option value="address">Address</option>
-                    <option value="address">Home</option>
-                    <option value="address">Company</option>
+            <div class="formgroup">
+                <select formControlName="address" class="main">
+                    <option value="">Address</option>
+                    <option value="Home">Home</option>
+                    <option value="Company">Company</option>
                 </select>
-                <div class="tag">
-                    <input type="text"  placeholder="Tags" formControlName="tag">
+                
+                <div *ngIf="userForm.get('address')?.value === 'Home'" class="main">
+                    <input type="text" formControlName="address1" placeholder="Address 1">
+                    <input type="text" formControlName="address2" placeholder="Address 2">
                 </div>
-                <div class="newsletter">
-                    <input type="checkbox">
-                    <label>Subscribe to Newsletter</label>
+                <div *ngIf="userForm.get('address')?.value === 'Company'" class="main">
+                    <input type="text" formControlName="address1" placeholder="Address 1">
+                    <input type="text" formControlName="address2" placeholder="Address 2">
+                </div>
+                </div>
+                <div class="formgroup">
+                    <input type="checkbox" class="main">
+                    <label >Subscribe to Newsletter</label>
                 </div>
                 <div class="submit">
-                    <button>Cancel</button>
-                    <button>Submit</button>
+                    <button (click)="onCancel" class="main">Cancel</button>
+                    <button (click)="onSubmit()">Submit</button>
                 </div>
             </div>
-    </div>
 
     </form>
     

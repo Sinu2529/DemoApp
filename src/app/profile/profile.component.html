@@ -1,31 +1,20 @@
-<div class="container">
-<div class="header">
-    <header>
-        <h2>Demo App</h2>
-        <li>Home</li>
-        <li>about us</li>
-        <li>Jobs</li>
-        <li>Clients</li>
-        <li>Developer</li>
-        <li>contact us</li>
-    </header>
-</div>
-
 <div class="profile">
-    <div class="pic">
-        <img src="/assets/profile-pic.jpg">
-        <button routerLink="/edit-profile">Edit Profile</button>
+    <div class="pic" *ngIf="userarray">
+        <img [src]="userarray[userarray.length - 1].image" alt="User Image" (error)="handleImageError($event)">
         <button>Edit Photo</button>
+        <button routerLink="/edit-profile">Edit Profile</button>
+
 
     </div>
+    <div *ngIf="userarray" class="info">
+        <!-- <p>{{userarray[userarray.length-1]|json}}</p> -->
+        <p>I'm {{userarray[userarray.length-1].first}} {{userarray[userarray.length-1].last}} and im above {{userarray[userarray.length-1].age}} years and you can send your emails to{{userarray[userarray.length-1].email}}. i live in the state of {{userarray[userarray.length-1].state}}.
+            I like to play {{userarray[userarray.length-1].tag}} ans please seend me the newsletters.Please reach out to me on my phone number{{userarray[userarray.length-1].number}}.</p>
+            <div class="agree">
+                <button>I agree</button>
+            </div>
+        </div>
 
-
-    <div class="info">
-        <p *ngFor="let user of userarray">I'm {{user.first}} {{user.last}} and im above {{user.age}} years and you can send your emails to{{user.email}}. i live in the state of {{user.state}}.
-        I like to play {{user.tag}} ans please seend me the newsletters.Please reach out to me on my phone number{{user.number}}.</p>
-    </div>
-    <div class="agree">
-        <button>I agree</button>
-    </div>
+    
 </div>
-</div>
+

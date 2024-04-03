@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -18,6 +18,14 @@ export class ProfileComponent {
       this.userarray =res;
     })
   }
+
+  handleImageError(event: any) {
+    // Log or handle the error as needed
+    console.error('Error loading image:', event);
+  }
+  
+
+
 
 
 }

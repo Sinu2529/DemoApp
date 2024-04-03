@@ -1,35 +1,71 @@
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { ServiceService } from '../../service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-profile',
   templateUrl: './edit-profile.component.html',
-  styleUrl: './edit-profile.component.css'
+  styleUrls: ['./edit-profile.component.css']
 })
-export class EditProfileComponent {
-  imageurl:string='/assets/profile-pic.jpg';
+export class EditProfileComponent implements OnInit {
+  imageurl="/assets/profile-pic.jpg";
+  userForm!: FormGroup;
+  lastEntry: any;
+  router: any;
 
-  user: any;
-  userForm: any;
-  constructor(private http:HttpClient){
+  constructor(private http: HttpClient, private fb: FormBuilder, public ss:ServiceService) {}
 
+  ngOnInit() {
+    this.userForm = this.fb.group({
+      image:[''],
+      first: [''],
+      last: [''],
+      email: [''],
+      number: [''],
+      age: [''],
+      state: [''],
+      country: [''],
+      address: [''],
+      address1:[''],
+      address2:[''],
+      tag: ['']
+    });
+
+    // Fetch the last entry from the JSON server
+    this.http.get<any>('http://localhost:3000/register?_sort=id&_order=desc&_limit=1').subscribe(data => {
+      if (data && data.length > 0) {
+        const lastEntry = data[0];
+        this.userForm.patchValue({
+          first: lastEntry.first,
+          last: lastEntry.last,
+          email: lastEntry.email,
+          number: lastEntry.number,
+          age: lastEntry.age,
+          state: lastEntry.state,
+          country: lastEntry.country,
+          address: lastEntry.address,
+          tag: lastEntry.tag
+        });
+      }
+    });
   }
-  onEdit(name:string){
-    this.http.get("http://localhost:3000/register"+name).subscribe((res:any)=>{
-      this.userForm = new FormGroup({
-        first:new FormControl(res.name),
-        last:new FormControl(res.last),
-        email:new FormControl(res.email),
-        number:new FormControl(res.number),
-        age:new FormControl(res.age),
-        state:new FormControl(res.state),
-        country:new FormControl(res.country),
-        address:new FormControl(res.adress),
-        tag:new FormControl(res.tag),
-      })
-    
+
+
+
+  onSubmit() {
+    debugger;
+    console.log(this.userForm.value)
+    const obj =this.userForm.value;
+    this.http.post('http://localhost:3000/register',obj).subscribe((result:any)=>{
+      alert("profile edited")
     })
   }
 
-}
+  onCancel() {
+    this.router.navigate(['/']);
+  }
+  }
+
+
