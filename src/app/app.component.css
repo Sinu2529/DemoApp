@@ -4,6 +4,7 @@
     justify-content: space-between;
     background-color: rgb(30, 17, 78);
     color: white;
+    padding: 20px;
 
  }
  ul{
@@ -15,7 +16,7 @@
      display: inline-block;
  }
 
-.last{
+.footor{
     display: flex;
     padding-top: 100px;
     padding-bottom: 200px;

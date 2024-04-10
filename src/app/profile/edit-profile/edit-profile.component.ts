@@ -46,11 +46,42 @@ export class EditProfileComponent implements OnInit {
           state: lastEntry.state,
           country: lastEntry.country,
           address: lastEntry.address,
+          address1: lastEntry.address1,
+          address2: lastEntry.address2,
           tag: lastEntry.tag
         });
       }
     });
   }
+  get ageFormControl() {
+    return this.userForm.controls;
+  }
+  addTag(tag: string) {
+    const tags = (this.userForm.get('tag')!.value as string[]) || [];
+    tags.push(tag);
+    this.userForm.get('tag')!.setValue(tags);
+  }
+  
+  removeTag(index: number) {
+    const tags = (this.userForm.get('tag')!.value as string[]) || [];
+    tags.splice(index, 1);
+    this.userForm.get('tag')!.setValue(tags);
+  }
+  
+
+
+  onSelectFile(e:any){
+    if(e.target.files){
+      var reader = new FileReader();
+      reader.readAsDataURL(e.target.files[0]);
+      reader.onload=(event:any)=>{
+        this.imageurl=event.target.result;
+        console.log(e.target.files)
+      }
+    }
+
+  }
+
 
 
 
@@ -63,9 +94,7 @@ export class EditProfileComponent implements OnInit {
     })
   }
 
-  onCancel() {
-    this.router.navigate(['/']);
-  }
+  
   }
 
 

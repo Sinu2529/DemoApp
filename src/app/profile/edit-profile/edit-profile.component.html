@@ -1,6 +1,6 @@
 <div class="container">
     <header>
-        <li>edit</li>
+        <li>Edit profile</li>
         <button class="btn-close">&times;</button>
     </header>
     <form [formGroup]="userForm">
@@ -9,12 +9,12 @@
                 <img [src]="imageurl" height="200px" width="200px">
             </div>
             <div class="file">
-            <input type="file" formControlName="image">  
+            <input type="file" formControlName="image" (change)="onSelectFile($event)">  
             </div>
         </div>
         <div class="row">
             <div class="formgroup">
-                <input type="text" class="main" placeholder="First Name" formControlName="first">
+                <input type="text" class="main" placeholder="First Name" formControlName="first" >
                 <input type="text" class="main" placeholder="Last Name" formControlName="last">
             </div>
             <div class="formgroup">
@@ -23,9 +23,12 @@
             <div class="formgroup">
                 <input type="phone" class="main" placeholder="Phone Number" formControlName="number">
             </div>
-            <div class="formgroup">
+            <div class="formgroup">                 
                 <label>Age</label>
                 <input type="range" class="main" min="1" max="100"  value="10" class="slider" formControlName="age">
+                <span>{{ ageFormControl['age'].value }}</span> years
+
+                
             </div>
             <div class="formgroup">
                 <select name="state" formControlName="state" class="main">
@@ -60,13 +63,30 @@
                     <input type="text" formControlName="address2" placeholder="Address 2">
                 </div>
                 </div>
+
+                <div class="formgroup">
+                    <div>
+                        <span *ngFor="let tag of userForm.get('tag')!.value">
+                             <span style="background-color: rgb(70, 68, 68);color: white; padding: 5px;">{{ tag }}</span>
+                          <button class="btn-close" (click)="removeTag(tag)">&times;</button>
+
+                        </span>
+                      </div>
+                  </div>
+                  
+                  
+                  <div>
+                    <input type="text" #newTagInput>
+                    <button (click)="addTag(newTagInput.value); newTagInput.value = ''">Add Tag</button>
+                  </div>
+            
                 <div class="formgroup">
                     <input type="checkbox" class="main">
                     <label >Subscribe to Newsletter</label>
                 </div>
                 <div class="submit">
-                    <button (click)="onCancel" class="main">Cancel</button>
-                    <button (click)="onSubmit()">Submit</button>
+                    <button class="main">Cancel</button>
+                    <button (click)="onSubmit">Submit</button>
                 </div>
             </div>
 

@@ -1,7 +1,7 @@
 <div class="profile">
     <div class="pic" *ngIf="userarray">
         <img [src]="userarray[userarray.length - 1].image" alt="User Image" (error)="handleImageError($event)">
-        <button>Edit Photo</button>
+        <button (click)="onSelectFile($event)">Edit Photo</button>
         <button routerLink="/edit-profile">Edit Profile</button>
 
 

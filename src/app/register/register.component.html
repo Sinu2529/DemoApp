@@ -33,7 +33,9 @@
                 <label>Age</label>
                 <input type="range" class="main" min="1" max="100"  value="10" class="slider" formControlName="age">
                 <span *ngIf="age && age.invalid && age.touched" style="color: red; font-size: small;">This field is require</span>
+                <span>{{ ageFormControl['age'].value }}</span> years
 
+                
             </div>
             <div class="formgroup">
                 <select name="state" formControlName="state" class="main">
@@ -69,34 +71,28 @@
                 </div>
                 </div>
 
+                <div class="formgroup">
+                    <div>
+                        <span *ngFor="let tag of userForm.get('tag')!.value">
+                             <span style="background-color: rgb(70, 68, 68);color: white; padding: 5px;">{{ tag }}</span>
+                          <button class="btn-close" (click)="removeTag(tag)">&times;</button>
 
+                        </span>
+                      </div>
+                  </div>
                   
-            <mat-form-field class="tags">
-                <mat-chip-grid #chipGrid aria-label="Tags">
-                  @for (tag of tags; track tag) {
-                    <mat-chip-row
-                      (removed)="remove(tag)"
-                      [editable]="true">
-                      {{tag.name}}
-                      <button matChipRemove [attr.aria-label]="'remove ' + tag.name">
-                        <mat-icon>cancel</mat-icon>
-                      </button>
-                    </mat-chip-row>
-                  }
-                  <input placeholder="New tag..." formControlName="tags" class="main"
-                         [matChipInputFor]="chipGrid"
-                         [matChipInputAddOnBlur]="addOnBlur"
-                         (matChipInputTokenEnd)="add($event)"/>
-                </mat-chip-grid>
-              </mat-form-field>
-              
-              
+                  
+                  <div>
+                    <input type="text" #newTagInput>
+                    <button (click)="addTag(newTagInput.value); newTagInput.value = ''">Add Tag</button>
+                  </div>
+            
                 <div class="formgroup">
                     <input type="checkbox" class="main">
                     <label >Subscribe to Newsletter</label>
                 </div>
                 <div class="submit">
-                    <button (click)="onCancel()" class="main">Cancel</button>
+                    <button class="main">Cancel</button>
                     <button (click)="onSaveUser()" routerLink="/profile" [disabled]="userForm.invalid">Submit</button>
                 </div>
             </div>
